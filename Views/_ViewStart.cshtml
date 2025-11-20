@@ -1,0 +1,10 @@
+﻿@{
+    if (User.IsInRole("Administrateur"))
+    {
+        Layout = "_Layout";
+    }
+    else if (User.IsInRole("Clinique"))
+    {
+        Layout = "_ClinicLayout";
+    }
+}

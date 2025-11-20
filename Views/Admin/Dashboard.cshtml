@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Tableau de bord Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Fond clair dégradé doux */
+    body, html {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(135deg, #f0f4f9 0%, #ffffff 100%);
+        font-family: Arial, sans-serif;
+        color: #003366; /* bleu foncé */
+    }
+
+    .container-dashboard {
+        min-height: 100vh;
+        padding: 2rem;
+        background-color: #ffffff;
+    }
+
+    /* Cartes translucides avec ombre douce */
+    .card {
+        background-color: #ffffffcc;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 51, 102, 0.2);
+        color: #003366;
+    }
+
+    .card-header {
+        font-weight: 700;
+        font-size: 1.25rem;
+        background-color: transparent;
+        border-bottom: none;
+        padding: 1rem 1rem 0.5rem 1rem;
+    }
+
+    .card-body {
+        text-align: center;
+        padding: 1rem 1rem 2rem 1rem;
+    }
+
+        .card-body i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #003366;
+        }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    /* Boutons bleu dégradé */
+    .btn-primary {
+        font-weight: 700;
+        background: linear-gradient(135deg, #003366 0%, #004080 100%);
+        border: none;
+        color: white;
+        box-shadow: 0 0 10px #003366;
+        transition: background 0.3s ease;
+        padding: 0.5rem 1.2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #002244 0%, #003366 100%);
+            box-shadow: 0 0 15px #002244;
+            text-decoration: none;
+        }
+
+    /* Espacement des colonnes */
+    .row > [class*="col-"] {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="container-dashboard">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="display-5 fw-bold m-0">@ViewData["Title"]</h2>
+        <a href="/" class="btn btn-outline-primary fw-bold">
+            <i class="bi bi-house-fill me-1"></i> Accueil
+        </a>
+    </div>
+
+    <!-- Première rangée de cartes -->
+    <div class="row justify-content-center">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header">Produits</div>
+                <div class="card-body">
+                    <i class="bi bi-box"></i>
+                    <h5 class="card-title">@ViewBag.TotalProduits</h5>
+                    <a href="/Admin/Produits" class="btn btn-primary fw-bold">Voir les produits</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header">Services</div>
+                <div class="card-body">
+                    <i class="bi bi-gear-fill"></i>
+                    <h5 class="card-title">@ViewBag.TotalServices</h5>
+                    <a href="/Admin/Services" class="btn btn-primary fw-bold">Voir les services</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header">Demandes</div>
+                <div class="card-body">
+                    <i class="bi bi-list-task"></i>
+                    <h5 class="card-title">@ViewBag.TotalDemandes</h5>
+                    <a href="/Admin/Demandes" class="btn btn-primary fw-bold">Voir les demandes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header">Non Traitées</div>
+                <div class="card-body">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <h5 class="card-title">@ViewBag.DemandesNonTraitees</h5>
+                    <a href="/Admin/Demandes" class="btn btn-primary fw-bold">Voir les non traitées</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deuxième rangée : carte Gestion globale (sans image ni bouton) -->
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header">Gestion globale</div>
+                <div class="card-body">
+                    <i class="bi bi-kanban"></i>
+                    <p class="card-title fs-6 fw-bold mb-2">Stocks&nbsp;&amp;&nbsp;Demandes</p>
+                    <small class="d-block text-muted">Vue consolidée de l’espace admin</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+@ {
+    ViewData ["Title"] = "Tableau de bord Clinique";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style >
+    body {
+        margin: 0;
+        height: 100vh;
+        background: url('/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #fff;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.95);
+        color: #000;
+    }
+
+    .sidebar-brand {
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffc107;
+    }
+
+    .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-section .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+    /* Masquer la sidebar pour cette page uniquement */
+    .col-md-2.bg-dark {
+        display: none !important;
+    }
+
+    .col-md-10 {
+        width: 100% !important;
+    }
+
+    </style>
+}

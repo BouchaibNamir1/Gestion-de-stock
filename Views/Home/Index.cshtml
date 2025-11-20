@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Accueil";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Afrobiomedic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #003366; /* bleu foncé pro */
+            background: linear-gradient(135deg, #ffffff 0%, #e6e9f0 100%);
+            /* Fond blanc dégradé */
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+        }
+
+            .logo img {
+                max-height: 140px;
+                object-fit: contain;
+                display: block;
+                margin: 0 auto;
+            }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #003366; /* bleu foncé */
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.7);
+        }
+
+        p.lead {
+            font-size: 1.25rem;
+            color: #004080;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white-gradient {
+            font-weight: 700;
+            padding: 0.75rem 2.5rem;
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, #ffffff 0%, #dcdde1 100%);
+            border: 2px solid #b0b3b8;
+            color: #003366;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .btn-white-gradient:hover,
+            .btn-white-gradient:focus {
+                background: linear-gradient(135deg, #f0f1f3 0%, #c8cbd1 100%);
+                box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+                color: #001f4d;
+                border-color: #8a8d92;
+            }
+
+        .small-text {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #004080;
+            font-weight: 600;
+        }
+
+            .small-text a {
+                color: #0059b3;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+                .small-text a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="logo">
+            <img src="/images/cropped-logo-afrobiomedic21072023.png" alt="Logo Afrobiomedic" />
+        </div>
+
+        <h1>Afrobiomedic Medical Excellence</h1>
+        <p class="lead">Optimisez votre gestion de stock et vos services médicaux avec précision.</p>
+
+        <a href="/Account/Login" class="btn btn-white-gradient btn-lg">Se connecter</a>
+
+        <div class="small-text">
+            Vous n'avez pas de compte ? <a href="/Account/Register">Créer un compte</a>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Tableau de bord Clinique";
+    Layout = "~/Views/Shared/_ClinicLayout.cshtml";
+}
+
+<style>
+    .content-background {
+        position: relative;
+        background: url('/visuals/images/telechargement(2).jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2rem;
+        color: #003366;
+        overflow: auto;
+        background-blend-mode: multiply;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 51, 102, 0.3);
+    }
+
+        .content-background::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(240,242,247,0.8) 50%, rgba(255,255,255,0.5) 100%);
+            z-index: 0;
+            border-radius: 8px;
+        }
+
+    .content-inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    .card {
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 51, 102, 0.2);
+        color: #003366;
+        background-color: #ffffffcc;
+    }
+
+    .card-header {
+        font-weight: 700;
+        background-color: transparent;
+        border-bottom: none;
+        color: #003366;
+        font-size: 1.25rem;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+        .card-body i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #003366;
+        }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        font-weight: 700;
+        background: linear-gradient(135deg, #003366 0%, #004080 100%);
+        border: none;
+        color: white;
+        box-shadow: 0 0 10px #003366;
+        transition: background 0.3s ease;
+        padding: 0.5rem 1.2rem;
+        border-radius: 6px;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #002244 0%, #003366 100%);
+            box-shadow: 0 0 15px #002244;
+            text-decoration: none;
+        }
+</style>
+
+<div class="content-background">
+    <div class="content-inner">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="display-5 fw-bold m-0">@ViewData["Title"]</h2>
+            <!-- Bouton accueil supprimé ici comme demandé -->
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">Produits</div>
+                    <div class="card-body">
+                        <i class="bi bi-box"></i>
+                        <h5 class="card-title">Voir les produits</h5>
+                        <a href="/Clinique/Produits" class="btn btn-primary fw-bold">Consulter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">Nouvelle Demande</div>
+                    <div class="card-body">
+                        <i class="bi bi-envelope-plus"></i>
+                        <h5 class="card-title">Créer une demande</h5>
+                        <a href="/Clinique/FaireDemande" class="btn btn-primary fw-bold">Faire une demande</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">Mes Demandes</div>
+                    <div class="card-body">
+                        <i class="bi bi-list-task"></i>
+                        <h5 class="card-title">Suivi des demandes</h5>
+                        <a href="/Clinique/Demandes" class="btn btn-primary fw-bold">Suivre</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">Services disponibles</div>
+                    <div class="card-body">
+                        <i class="bi bi-gear-fill"></i>
+                        <h5 class="card-title">Voir les services</h5>
+                        <a href="/Clinique/Services" class="btn btn-primary fw-bold">Consulter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header">À propos de AFROBIOMEDIC</div>
+                    <div class="card-body">
+                        <p>
+                            AFROBIOMEDIC est une entreprise spécialisée dans le secteur biomédical, offrant des solutions innovantes et de qualité pour améliorer la santé et le bien-être.
+                        </p>
+                        <p>
+                            Nous nous engageons à fournir des services professionnels et un accompagnement personnalisé à nos clients.
+                        </p>
+                        <a href="/Clinique/Apropos" class="btn btn-primary fw-bold mt-2">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

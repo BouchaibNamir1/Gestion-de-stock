@@ -1,0 +1,44 @@
+﻿@model Gestion_de_stock.Models.Produit
+@{
+    ViewData["Title"] = "Ajouter un Produit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-dashboard">
+    <h2 class="text-center fw-bold mb-4">Ajouter un nouveau produit</h2>
+
+    <div class="card shadow-sm p-4 mx-auto" style="max-width: 700px;">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Nom du produit</label>
+                <input asp-for="Nom" class="form-control" required />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="3" required></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Stock disponible</label>
+                <input asp-for="Stock" type="number" class="form-control" required />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Prix (€)</label>
+                <input asp-for="Prix" type="number" step="0.01" class="form-control" required />
+                <span asp-validation-for="Prix" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary fw-bold">Ajouter</button>
+            <a href="/Admin/Produits" class="btn btn-secondary ms-2">Annuler</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

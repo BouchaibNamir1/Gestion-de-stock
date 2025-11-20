@@ -1,0 +1,61 @@
+﻿@model Gestion_de_stock.Models.Demande
+
+@{
+    ViewData["Title"] = "Traiter la demande";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-dashboard py-4" style="max-width: 600px;">
+    <h2 class="display-5 fw-bold mb-4 text-center">@ViewData["Title"]</h2>
+
+    <div class="card shadow-sm p-4">
+        <dl class="row mb-4">
+            <dt class="col-sm-4 fw-bold">Clinique :</dt>
+            <dd class="col-sm-8">@Model.CliniqueNom</dd>
+
+            <dt class="col-sm-4 fw-bold">Type :</dt>
+            <dd class="col-sm-8">@Model.TypeDemande</dd>
+
+            <dt class="col-sm-4 fw-bold">Description :</dt>
+            <dd class="col-sm-8">@Model.Description</dd>
+
+            <dt class="col-sm-4 fw-bold">Date :</dt>
+            <dd class="col-sm-8">@Model.DateDemande.ToString("dd/MM/yyyy HH:mm")</dd>
+
+            <dt class="col-sm-4 fw-bold">Statut actuel :</dt>
+            <dd class="col-sm-8">
+                @if (Model.Statut == "Non Traité")
+                {
+                    <span class="badge bg-danger">@Model.Statut</span>
+                }
+                else if (Model.Statut == "Traité")
+                {
+                    <span class="badge bg-success">@Model.Statut</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">@Model.Statut</span>
+                }
+            </dd>
+        </dl>
+
+        <form asp-action="TraiterDemande" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label for="statut" class="form-label fw-bold">Changer le statut</label>
+                <select asp-for="Statut" class="form-select" required>
+                    <option value="Non Traité" selected="@(Model.Statut == "Non Traité")">Non Traité</option>
+                    <option value="Traité" selected="@(Model.Statut == "Traité")">Traité</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success fw-bold">
+                    <i class="bi bi-save2 me-1"></i> Enregistrer
+                </button>
+                <a href="/Admin/Demandes" class="btn btn-secondary fw-bold">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>

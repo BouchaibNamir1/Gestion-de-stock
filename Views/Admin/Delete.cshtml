@@ -1,0 +1,64 @@
+﻿@model Gestion_de_stock.Models.Produit
+@{
+    ViewData["Title"] = "Supprimer un Produit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .content-wrap {
+        min-height: 100vh;
+        padding: 2rem
+    }
+
+    .card {
+        background: #ffffffcc;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,51,102,.2)
+    }
+
+    dl dt {
+        font-weight: 700;
+        color: #003366
+    }
+
+    .btn-danger {
+        font-weight: 700
+    }
+
+    .btn-primary {
+        font-weight: 700;
+        background: linear-gradient(135deg,#003366 0%,#004080 100%);
+        border: none;
+        color: #fff;
+        border-radius: 6px
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg,#002244 0%,#003366 100%)
+        }
+</style>
+
+<div class="content-wrap">
+    <h2 class="text-center fw-bold mb-4">Supprimer le produit</h2>
+
+    <div class="card p-4 mx-auto" style="max-width:650px">
+        <h4 class="mb-4">Êtes‑vous sûr de vouloir supprimer ce produit ?</h4>
+
+        <dl class="row">
+            <dt class="col-sm-4">Nom</dt>
+            <dd class="col-sm-8">@Model.Nom</dd>
+            <dt class="col-sm-4">Description</dt>
+            <dd class="col-sm-8">@Model.Description</dd>
+            <dt class="col-sm-4">Stock</dt>
+            <dd class="col-sm-8">@Model.Stock</dd>
+            <dt class="col-sm-4">Prix (€)</dt>
+            <dd class="col-sm-8">@Model.Prix.ToString("F2")</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+            <a href="/Admin/Produits" class="btn btn-secondary ms-2">Annuler</a>
+        </form>
+    </div>
+</div>

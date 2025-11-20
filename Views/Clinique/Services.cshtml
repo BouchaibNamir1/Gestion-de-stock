@@ -1,0 +1,126 @@
+﻿@model List<Gestion_de_stock.Models.Service>
+
+@{
+    ViewData["Title"] = "Services disponibles";
+    Layout = "~/Views/Shared/_ClinicLayout.cshtml";
+}
+
+<style>
+    .content-background {
+        position: relative;
+        background: url('/visuals/images/telechargement(2).jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2rem;
+        color: #003366;
+        overflow: auto;
+        background-blend-mode: multiply;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 51, 102, 0.3);
+    }
+
+        .content-background::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(240,242,247,0.8) 50%, rgba(255,255,255,0.5) 100%);
+            z-index: 0;
+            border-radius: 8px;
+        }
+
+    .content-inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    table {
+        background-color: #e9ecef;
+        color: #003366;
+    }
+
+    th {
+        background-color: #003366 !important;
+        color: #a8cdf4 !important;
+        font-weight: 700;
+    }
+
+    td, th {
+        vertical-align: middle !important;
+    }
+
+    .services-excellence {
+        text-align: center;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        color: #003366;
+    }
+
+        .services-excellence h3 {
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            white-space: pre-line;
+        }
+
+        .services-excellence p {
+            font-size: 1.2rem;
+            color: #00509e;
+            margin-bottom: 2rem;
+        }
+
+    /* Style pour le logo SVG */
+    .services-logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+        display: block;
+        fill: #00509e;
+        filter: drop-shadow(0 0 3px rgba(0,80,158,0.7));
+        transition: transform 0.3s ease;
+    }
+
+        .services-logo:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+</style>
+
+<div class="content-background">
+    <div class="content-inner">
+        <h2 class="text-center fw-bold mb-4">@ViewData["Title"]</h2>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var service in Model)
+                {
+                    <tr>
+                        <td>@service.Nom</td>
+                        <td>@service.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="services-excellence">
+            <h3>
+                Services
+                d’excellence
+            </h3>
+            <p>Un service d’excellence et un traitement client personnalisé</p>
+
+            <!-- Logo SVG simple -->
+            <svg class="services-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="Logo services d'excellence" role="img">
+                <circle cx="32" cy="32" r="30" stroke="#00509e" stroke-width="3" fill="none" />
+                <path d="M20 32l8 8 16-16" stroke="#00509e" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+</div>

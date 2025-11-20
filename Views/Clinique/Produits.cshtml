@@ -1,0 +1,127 @@
+﻿@model List<Gestion_de_stock.Models.Produit>
+
+@{
+    ViewData["Title"] = "Produits disponibles";
+    Layout = "~/Views/Shared/_ClinicLayout.cshtml";
+}
+
+<style>
+    /* ---------- décor et tableau ---------- */
+    .content-background {
+        position: relative;
+        background: url('/visuals/images/telechargement(2).jpg') no-repeat center/cover fixed;
+        min-height: 100vh;
+        padding: 2rem;
+        color: #003366;
+        overflow: auto;
+        background-blend-mode: multiply;
+        background-color: rgba(255,255,255,.85);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,51,102,.3);
+    }
+
+        .content-background::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,.5)0%, rgba(240,242,247,.8)50%, rgba(255,255,255,.5)100%);
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+    .content-inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    table {
+        background: #e9ecef;
+        color: #003366;
+    }
+
+    th {
+        background: #003366 !important;
+        color: #a8cdf4 !important;
+        font-weight: 700;
+    }
+
+    td, th {
+        vertical-align: middle !important;
+    }
+
+    /* ---------- cartes images ---------- */
+    .produit-img {
+        width: 75%; /* largeur réduite */
+        height: auto; /* hauteur auto pour garder proportions */
+        margin-left: auto; /* centrage horizontal */
+        margin-right: auto;
+        display: block; /* nécessaire pour margin auto */
+        background: #f0f4f9; /* couleur de fond si img absente */
+        object-fit: contain; /* pour garder proportions sans couper */
+    }
+</style>
+
+<div class="content-background">
+    <div class="content-inner">
+        <h2 class="text-center fw-bold mb-4">@ViewData["Title"]</h2>
+
+        <!-- Tableau des produits -->
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Prix (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var produit in Model)
+                {
+                    <tr>
+                        <td>@produit.Nom</td>
+                        <td>@produit.Description</td>
+                        <td>@produit.Stock</td>
+                        <td>@produit.Prix.ToString("F2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <hr class="my-5" />
+
+        <h4 class="fw-bold mb-4 text-center">Nos dispositifs médicaux en vedette</h4>
+
+        <div class="row justify-content-center">
+            <!-- Carte 1 -->
+            <div class="col-md-5 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="~/images/BIOTRONIK-SELECTRA-3D-v2.jpg"
+                         class="card-img-top produit-img"
+                         alt="Biotronik Selectra 3D" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Biotronik Selectra 3D</h5>
+                        <p class="card-text small text-muted">
+                            Guidage 3D de précision pour procédures de rhythmologie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="col-md-5 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="~/images/myval-THV_v2.jpg"
+                         class="card-img-top produit-img"
+                         alt="Valve Myval THV" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Valve Myval THV</h5>
+                        <p class="card-text small text-muted">
+                            Valve transcathéter de dernière génération, profil ultrafin.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

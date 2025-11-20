@@ -1,0 +1,78 @@
+﻿@model List<Gestion_de_stock.Models.Produit>
+@{
+    ViewData["Title"] = "Produits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .info-section {
+        background-color: #f8fbff;
+        border: 1px solid #dce7f5;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 51, 102, 0.1);
+        color: #003366;
+    }
+
+        .info-section i {
+            font-size: 2.5rem;
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-section p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+</style>
+
+<div class="container-dashboard">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="display-5 fw-bold m-0">Liste des Produits</h2>
+        <a class="btn btn-primary fw-bold" href="/Admin/AjouterProduit">
+            <i class="bi bi-plus-circle"></i> Ajouter un produit
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover bg-white text-dark shadow-sm">
+        <thead class="table-primary">
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>Prix (€)</th>
+                <th style="width: 160px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Nom</td>
+                    <td>@p.Description</td>
+                    <td>@p.Stock</td>
+                    <td>@p.Prix.ToString("F2")</td>
+                    <td>
+                        <a href="/Admin/Edit/@p.Id" class="btn btn-sm btn-outline-primary me-2">
+                            <i class="bi bi-pencil"></i> Modifier
+                        </a>
+                        <a href="/Admin/Delete/@p.Id" class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i> Supprimer
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Bloc descriptif en bas -->
+    <div class="info-section">
+        <i class="bi bi-box-seam"></i>
+        <p>
+            Cette section vous permet de gérer efficacement les produits disponibles dans la clinique.
+            Vous pouvez consulter, modifier ou supprimer les articles en stock.
+        </p>
+    </div>
+</div>

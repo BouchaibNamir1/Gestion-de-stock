@@ -1,0 +1,119 @@
+﻿@model Gestion_de_stock.Models.Demande
+
+@{
+    ViewData["Title"] = "Faire une demande";
+    Layout = "~/Views/Shared/_ClinicLayout.cshtml"; // si tu veux utiliser le même layout que ta page "Mes demandes"
+}
+
+<style>
+    .content-background {
+        position: relative;
+        background: url('/visuals/images/telechargement(2).jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2rem 3rem;
+        color: #003366;
+        background-blend-mode: multiply;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 51, 102, 0.3);
+        max-width: 600px;
+        margin: 3rem auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
+
+    form div {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    input.form-control,
+    select.form-control,
+    textarea.form-control {
+        border-radius: 6px;
+        border: 1.5px solid #003366;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        color: #003366;
+        transition: border-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        input.form-control:focus,
+        select.form-control:focus,
+        textarea.form-control:focus {
+            border-color: #00509e;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 80, 158, 0.5);
+        }
+
+    .text-danger {
+        font-size: 0.9rem;
+        color: #d9534f;
+    }
+
+    button.btn-primary {
+        background-color: #003366;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: block;
+        margin: 0 auto;
+    }
+
+        button.btn-primary:hover {
+            background-color: #00509e;
+        }
+</style>
+
+<div class="content-background">
+    <h2>@ViewData["Title"]</h2>
+
+    <form asp-controller="Demande" asp-action="Create" method="post" novalidate>
+        <div>
+            <label asp-for="CliniqueNom">Nom de la clinique</label>
+            <input asp-for="CliniqueNom" class="form-control" required />
+            <span asp-validation-for="CliniqueNom" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="TypeDemande">Type de demande</label>
+            <select asp-for="TypeDemande" class="form-control" required>
+                <option value="">-- Choisir un type --</option>
+                <option value="Commande médicaments">Commande médicaments</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Autre">Autre</option>
+            </select>
+            <span asp-validation-for="TypeDemande" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Description">Description</label>
+            <textarea asp-for="Description" rows="4" class="form-control" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

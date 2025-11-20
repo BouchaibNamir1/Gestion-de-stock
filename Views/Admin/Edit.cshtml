@@ -1,0 +1,76 @@
+﻿@model Gestion_de_stock.Models.Produit
+@{
+    ViewData["Title"] = "Modifier un Produit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .content-wrap {
+        min-height: 100vh;
+        padding: 2rem
+    }
+
+    .card {
+        background: #ffffffcc;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,51,102,.2)
+    }
+
+    label {
+        font-weight: 700;
+        color: #003366
+    }
+
+    .btn-primary {
+        font-weight: 700;
+        background: linear-gradient(135deg,#003366 0%,#004080 100%);
+        border: none;
+        color: #fff;
+        border-radius: 6px
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg,#002244 0%,#003366 100%)
+        }
+</style>
+
+<div class="content-wrap">
+    <h2 class="text-center fw-bold mb-4">Modifier le produit</h2>
+
+    <div class="card p-4 mx-auto" style="max-width:650px">
+        <form method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Nom"></label>
+                <input asp-for="Nom" class="form-control" required />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="3" class="form-control" required></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Stock"></label>
+                <input asp-for="Stock" type="number" class="form-control" required />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Prix"></label>
+                <input asp-for="Prix" type="number" step="0.01" class="form-control" required />
+                <span asp-validation-for="Prix" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="/Admin/Produits" class="btn btn-secondary ms-2">Annuler</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

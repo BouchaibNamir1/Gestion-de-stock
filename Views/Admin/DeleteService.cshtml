@@ -1,0 +1,28 @@
+﻿@model Gestion_de_stock.Models.Service
+@{
+    ViewData["Title"] = "Supprimer un Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-dashboard">
+    <h2 class="text-center fw-bold mb-4">Supprimer le service</h2>
+    <div class="card shadow-sm p-4">
+        <h5>Êtes-vous sûr de vouloir supprimer ce service ?</h5>
+        <dl class="row mt-3">
+            <dt class="col-sm-3">Nom</dt>
+            <dd class="col-sm-9">@Model.Nom</dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+
+            <dt class="col-sm-3">Prix (€)</dt>
+            <dd class="col-sm-9">@Model.Prix.ToString("F2")</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger fw-bold">Supprimer</button>
+            <a href="/Admin/Services" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+</div>

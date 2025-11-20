@@ -1,0 +1,116 @@
+﻿@model List<Gestion_de_stock.Models.Demande>
+
+@{
+    ViewData["Title"] = "Mes demandes";
+    Layout = "~/Views/Shared/_ClinicLayout.cshtml";
+}
+
+<style>
+    .content-background {
+        position: relative;
+        background: url('/visuals/images/telechargement(2).jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2rem;
+        color: #003366;
+        background-blend-mode: multiply;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 51, 102, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* centre vertical */
+        align-items: center; /* centre horizontal */
+        text-align: center;
+    }
+
+    table {
+        background-color: #e9ecef;
+        color: #003366;
+        margin-bottom: 3rem;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: #003366 !important;
+        color: #a8cdf4 !important;
+        font-weight: 700;
+    }
+
+    td, th {
+        vertical-align: middle !important;
+    }
+
+    .empty-message {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem 3rem;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 80, 158, 0.4);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #00509e;
+        font-size: 1.5rem;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .empty-icon {
+        width: 60px;
+        height: 60px;
+        fill: #00509e;
+    }
+</style>
+
+<div class="content-background">
+    <h2 class="fw-bold mb-4">@ViewData["Title"]</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="empty-message" role="alert" aria-live="polite">
+            <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                <path d="M32 2a30 30 0 1 0 30 30A30 30 0 0 0 32 2zm0 54a24 24 0 1 1 24-24 24.027 24.027 0 0 1-24 24zm-2-36h4v18h-4zm2 24a4 4 0 1 1 4-4 4 4 0 0 1-4 4z" />
+            </svg>
+            <p>Aucune demande pour le moment.<br />Vous pourrez suivre ici l'état de vos demandes dès qu'elles seront envoyées.</p>
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Type de demande</th>
+                    <th>Description</th>
+                    <th>Statut</th>
+                    <th>Date de la demande</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var demande in Model)
+                {
+                    <tr>
+                        <td>@demande.TypeDemande</td>
+                        <td>@demande.Description</td>
+                        <td>
+                            @if (demande.Statut == "Non Traité")
+                            {
+                                <span class="badge bg-danger">@demande.Statut</span>
+                            }
+                            else if (demande.Statut == "Traité")
+                            {
+                                <span class="badge bg-success">@demande.Statut</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">@demande.Statut</span>
+                            }
+                        </td>
+                        <td>@demande.DateDemande.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

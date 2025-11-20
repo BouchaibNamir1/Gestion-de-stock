@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "À propos de AFROBIOMEDIC";
+    Layout = "~/Views/Shared/_ClinicLayout.cshtml";
+}
+
+<style>
+    .content-background {
+        position: relative;
+        background: url('/visuals/images/telechargement(2).jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2rem;
+        color: #003366;
+        overflow: auto;
+        background-blend-mode: multiply;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 51, 102, 0.3);
+    }
+
+        .content-background::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(240,242,247,0.8) 50%, rgba(255,255,255,0.5) 100%);
+            z-index: 0;
+            border-radius: 8px;
+        }
+
+    .content-inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    h4, h5 {
+        color: #003366;
+        font-weight: 700;
+    }
+
+        h4.text-warning, h5.text-warning {
+            color: #004080; /* un bleu un peu plus sombre que warning */
+        }
+</style>
+
+<div class="content-background">
+    <div class="content-inner">
+        <h2 class="mb-4 fw-bold">@ViewData["Title"]</h2>
+
+        <div class="bg-white p-4 rounded shadow-sm">
+            <h4 class="text-warning">Afrobiomedic Medical Excellence – Définition et Informations clés</h4>
+
+            <p><strong>Nom de l’entreprise :</strong> Afrobiomedic Medical Excellence</p>
+            <p><strong>Fondateur / Dirigeant :</strong> M. Naser</p>
+            <p><strong>Secteur d’activité :</strong> Biomédical / Technologies médicales / Solutions de santé</p>
+            <p><strong>Date de création :</strong> [À compléter selon information disponible, ex. : 2018]</p>
+            <p><strong>Siège social :</strong> [Ville/Pays à compléter]</p>
+
+            <h5 class="text-warning mt-4">Mission principale :</h5>
+            <ul>
+                <li>Fournir des solutions biomédicales innovantes et de haute qualité</li>
+                <li>Améliorer la santé et le bien-être des patients grâce à des technologies avancées</li>
+                <li>Répondre aux besoins spécifiques des professionnels de santé en Afrique et à l’international</li>
+            </ul>
+
+            <h5 class="text-warning mt-4">Domaines d’expertise :</h5>
+            <ul>
+                <li>Équipements médicaux</li>
+                <li>Dispositifs biomédicaux</li>
+                <li>Services personnalisés pour établissements de santé</li>
+            </ul>
+
+            <h5 class="text-warning mt-4">Valeurs fondamentales :</h5>
+            <ul>
+                <li>Excellence et qualité</li>
+                <li>Innovation continue</li>
+                <li>Fiabilité et éthique professionnelle</li>
+            </ul>
+
+            <h5 class="text-warning mt-4">Public cible :</h5>
+            <ul>
+                <li>Hôpitaux, cliniques et centres médicaux</li>
+                <li>Professionnels de la santé (médecins, techniciens biomédicaux)</li>
+                <li>Patients en quête de soins de qualité</li>
+            </ul>
+
+            <h5 class="text-warning mt-4">Vision :</h5>
+            <ul>
+                <li>Devenir un acteur majeur dans le domaine biomédical en Afrique</li>
+                <li>Développer des solutions adaptées aux enjeux spécifiques des systèmes de santé locaux</li>
+            </ul>
+        </div>
+    </div>
+</div>
